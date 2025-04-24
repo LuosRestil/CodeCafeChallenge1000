@@ -1,0 +1,54 @@
+Skylink, a futuristic airborne logistics network, is tasked with optimizing its passenger transit routes between floating cities. Each floating city has a limited landing bay capacity, restricting the number of passengers it can receive per day.
+
+You are given:
+
+A set of transmissions that describe relays between cities, each with a maximum allowed quota per day (capacity limit).
+
+A primary hub city where all transmissions originate.
+
+A set of final arrival points where passengers need to be delivered.
+
+Your task is to compute the maximum number of passengers that can be transported per day from the primary hub to all final arrival points, ensuring that no relay exceeds its quota.
+
+The input consists of an unstructured log file, where each transmission is recorded as follows:
+
+[LOG ID] TRANSMISSION: NODE <from> RELAYS <to> UNDER QUOTA <capacity>
+Additionally, there will be a hub city alert indicating the main starting point of transmissions:
+
+[LOG ID] ALERT: PRIMARY NODE IS <hub>
+And a final arrival points notification listing the required destination cities:
+
+[LOG ID] CRITICAL: FINAL ARRIVAL POINTS ARE <arrival1>, <arrival2>, ...
+Example input:
+
+[10001] TRANSMISSION: NODE A0 RELAYS A1 UNDER QUOTA 10  
+[10002] TRANSMISSION: NODE A0 RELAYS A2 UNDER QUOTA 5  
+[10003] ALERT: PRIMARY NODE IS A0  
+[10004] CRITICAL: FINAL ARRIVAL POINTS ARE A1, A2  
+In this example:
+
+There are two transmission routes between cities:
+
+A0 → A1 (max 10 passengers)
+
+A0 → A2 (max 5 passengers)
+
+The primary hub is A0.
+
+The final destinations are A1 and A2.
+
+For this input, the expected output is 15 (10 + 5).
+
+(Hub)    10
+  A0 ---------> A1 (Destination)
+  |
+  | 5
+  |
+  v
+  A2 (Destination)
+Constraints
+There will always be at least one valid path from the hub to a destination.
+
+No duplicate routes between the same two cities.
+
+Capacities are always positive integers.
